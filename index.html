@@ -30,7 +30,8 @@ var canvas = document.getElementById("canvas"),
         velY: 0,
         jumping: false,
         grounded: false,
-        color:"red"
+        color:"red",
+        walljump:true
     },
     keys = [],
     friction = 0.8,
@@ -85,7 +86,7 @@ function update() {
     // check keys
     if (keys[38] || keys[32]) {
         // up arrow or space
-        if (!player.jumping && player.grounded) {
+        if (!player.jumping && player.grounded && walljump == true) {
             player.jumping = true;
             player.grounded = false;
             player.velY = -player.speed * 1.7;
