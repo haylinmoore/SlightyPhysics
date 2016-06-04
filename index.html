@@ -86,7 +86,7 @@ function update() {
     // check keys
     if (keys[38] || keys[32]) {
         // up arrow or space
-        if (!player.jumping && player.grounded && player.walljump == true) {
+        if (!player.jumping && player.grounded) {
             player.jumping = true;
             player.grounded = false;
             player.velY = -player.speed * 1.7;
@@ -120,7 +120,7 @@ function update() {
 
         if (dir === "r") {
             player.velX = 0;
-            if (keys[38] || keys[32]) {
+            if (keys[38] && player.walljump == true) {
 
             player.velY = -player.speed * 1.3;
             player.velX=player.velX-7;
@@ -129,7 +129,7 @@ function update() {
             
         } else if (dir === "l" ) {
             player.velX = 0;
-            if (keys[38] || keys[32]) {
+            if (keys[38] && player.walljump == true) {
 
             player.velY = -player.speed * 1.3;
             player.velX=player.velX+7;
