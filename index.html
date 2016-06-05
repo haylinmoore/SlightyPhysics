@@ -91,6 +91,17 @@
        
 
     }
+    function randBot() {
+        var min = 37;
+        var max=39;
+        var k;
+        setInterval(function () {
+            keys[k] = false;
+            k = Math.floor(Math.random()*(max-min+1)+min);
+            console.log(k);
+            keys[k] = true;
+        }, 600);
+    }
     
     function update() {
         // check keys
