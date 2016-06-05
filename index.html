@@ -17,6 +17,7 @@
         width: 10,
         height: 10,
         speed: 3,
+        jumpForce: 1.7,
         velX: 0,
         velY: 0,
         jumping: false,
@@ -24,7 +25,7 @@
         color: "red",
         walljump: true,
         walljumpForceX: 2.5,
-        walljumpForceY: 4
+        walljumpForceY: 1.4
     },
     keys = [],
     boxes = [],
@@ -75,7 +76,7 @@
              if (!player.jumping && player.grounded) {
                 player.jumping = true;
                 player.grounded = false;
-                player.velY = -player.speed * 1.7;
+                player.velY = -player.speed * player.jumpForce;
             }
         }
         if (keys[39]) {             // right arrow
