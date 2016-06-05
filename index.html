@@ -22,7 +22,7 @@
         velY: 0,
         jumping: false,
         grounded: false,
-        color: "green",
+        color: "orange",
         walljump: true,
         walljumpForceX: 2.2,
         walljumpForceY: 1.4
@@ -79,6 +79,12 @@
         addBox(470, 310, 25, 5);
         addBox(360, 170, 5, 100);
         addBox(310, 170, 50, 5);
+        addExe(310, 150, 20, 20,"addBox(250,170,30,5);","yellow");
+        addExe(170,155,15,15,"gravity=0.1","blue");
+        addBox(170,170,30,5);
+        addBox(0,170,30,5);
+        addExe(10,155,15,15,"alert('Demo Finished'); clear();","green");
+
     }
     
     function update() {
@@ -145,6 +151,7 @@
             
             if (dir === "r" || dir === "l" || dir === "b" || dir === "t") {
                 eval(execute[i].code);
+                execute.splice(i,1);
             }
         }
         
