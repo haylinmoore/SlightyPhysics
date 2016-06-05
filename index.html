@@ -29,6 +29,7 @@
     },
     keys = [],
     boxes = [],
+    execute=[],
     friction = 0.8,
     gravity = 0.3;
     
@@ -43,7 +44,16 @@
             height: yl
         });
     }
-    
+    function addExe(sx, sy, xl, yl, Code, COLOR) {
+        execute.push({
+            x: sx,
+            y: sy,
+            width: xl,
+            height: yl,
+            code: Code,
+            color: COLOR
+        });
+    }
     function clear() {
         boxes = [];
         addBox(0, 0, 10, height);
@@ -95,9 +105,20 @@
         player.grounded = false;
         
         ctx.clearRect(0, 0, width, height);
-        ctx.fillStyle = "black";
+        
         ctx.beginPath();
         
+        for (var i = 0; i <  execute.length; i++) {
+            
+            drawBox(execute[i]);
+                
+            var dir = colCheck(player,  execute[i]);
+            
+            if (dir === "r" || dir === "l" || dir === "b" || dir === "t") {
+                eval(execute[i].code);
+            }
+        }
+        ctx.fillStyle = "black";
         for (var i = 0; i < boxes.length; i++) {
             
             drawBox(boxes[i]);
@@ -137,8 +158,10 @@
     }
     
     function drawBox(p1) {
+        ctx.fillStyle = "black";
         ctx.rect(p1.x, p1.y, p1.width, p1.height);
     }
+    
     
     function drawPlayer(p1) {
         ctx.fill();
