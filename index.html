@@ -110,7 +110,7 @@
         
         for (var i = 0; i <  execute.length; i++) {
             
-            drawBox(execute[i]);
+            drawExe(execute[i]);
                 
             var dir = colCheck(player,  execute[i]);
             
@@ -118,7 +118,7 @@
                 eval(execute[i].code);
             }
         }
-        ctx.fillStyle = "black";
+        
         for (var i = 0; i < boxes.length; i++) {
             
             drawBox(boxes[i]);
@@ -159,6 +159,10 @@
     
     function drawBox(p1) {
         ctx.fillStyle = "black";
+        ctx.rect(p1.x, p1.y, p1.width, p1.height);
+    }
+    function drawExe(p1) {
+        ctx.fillStyle =p1.color;
         ctx.rect(p1.x, p1.y, p1.width, p1.height);
     }
     
