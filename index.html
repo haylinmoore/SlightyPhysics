@@ -22,7 +22,7 @@
         velY: 0,
         jumping: false,
         grounded: false,
-        color: "red",
+        color: "green",
         walljump: true,
         walljumpForceX: 2.2,
         walljumpForceY: 1.4
@@ -105,22 +105,13 @@
         player.grounded = false;
         
         ctx.clearRect(0, 0, width, height);
-        
-        ctx.beginPath();
-        
-        for (var i = 0; i <  execute.length; i++) {
-            
-            drawExe(execute[i]);
                 
-            var dir = colCheck(player,  execute[i]);
-            
-            if (dir === "r" || dir === "l" || dir === "b" || dir === "t") {
-                eval(execute[i].code);
-            }
-        }
+        
+        
         
         for (var i = 0; i < boxes.length; i++) {
-            
+            ctx.beginPath();
+            ctx.fillStyle = "black";
             drawBox(boxes[i]);
                 
             var dir = colCheck(player, boxes[i]);
@@ -145,6 +136,17 @@
             }
         }
         
+        for (var i = 0; i <  execute.length; i++) {
+            ctx.beginPath();
+            drawExe(execute[i]);
+                
+            var dir = colCheck(player,  execute[i]);
+            
+            if (dir === "r" || dir === "l" || dir === "b" || dir === "t") {
+                eval(execute[i].code);
+            }
+        }
+        
         if(player.grounded) {
              player.velY = 0;
         }
@@ -160,10 +162,14 @@
     function drawBox(p1) {
         ctx.fillStyle = "black";
         ctx.rect(p1.x, p1.y, p1.width, p1.height);
+        ctx.fill();
+        ctx.closePath();
     }
     function drawExe(p1) {
         ctx.fillStyle =p1.color;
         ctx.rect(p1.x, p1.y, p1.width, p1.height);
+        ctx.fill();
+        ctx.closePath();
     }
     
     
