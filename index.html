@@ -43,6 +43,7 @@
             width: xl,
             height: yl
         });
+        return boxes.length-1;
     }
     function addExe(sx, sy, xl, yl, Code, COLOR) {
         execute.push({
@@ -53,8 +54,9 @@
             code: Code,
             color: COLOR,
         });
+        return execute.length-1;
     }
-    function clear() {
+    function clearBox() {
         boxes = [];
         execute = [];
         addBox(0, 0, 10, height);
@@ -65,10 +67,10 @@
         player.y = height-10;
     }
     
-    clear();
+    clearBox();
     
     function level1() {
-        clear();
+        clearBox();
         addBox(120, 480, 50, 5);
         addBox(170, 460, 50, 5);
         addBox(230, 430, 50, 5);
@@ -130,9 +132,6 @@
         player.grounded = false;
         
         ctx.clearRect(0, 0, width, height);
-                
-        
-        
         
         for (var i = 0; i < boxes.length; i++) {
             ctx.beginPath();
