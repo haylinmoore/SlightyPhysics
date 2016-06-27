@@ -77,11 +77,17 @@ function level1() {
   addBox(470, 310, 25, 5);
   addBox(360, 170, 5, 100);
   addBox(310, 170, 50, 5);
-  addExe(310, 150, 20, 20,"addBox(250,170,30,5);","yellow");
-  addExe(170,155,15,15,"gravity=0.1","blue");
+  addExe(310, 150, 20, 20, function() {
+    addBox(250,170,30,5);
+  }, "yellow");
+  addExe(170,155,15,15, function() {
+    gravity=0.1
+  }, "blue");
   addBox(170,170,30,5);
   addBox(0,170,30,5);
-  addExe(10,155,15,15,"level2();","green");
+  addExe(10,155,15,15, function() {
+    level2();
+  }, "green");
 }
 function level2() {
   clearBox();
@@ -96,7 +102,11 @@ function level2() {
   addBox(390, 310, 40, 10);
   addBox(310, 230, 40, 10);
   addBox(150, 230, 40, 10);
-  addExe(320, 210, 20, 20, 'addExe(160, 210, 20, 20, "end();", "green");', "yellow");
+  addExe(320, 210, 20, 20, function() {
+    addExe(160, 210, 20, 20, function() {
+      end();
+    }, "green");
+  }, "yellow");
 }
 function end() {
     alert('Demo finished!');
@@ -176,7 +186,7 @@ function randBot() {
       var dir = colCheck(player,  execute[i]);
       
       if (dir === "r" || dir === "l" || dir === "b" || dir === "t") {
-          eval(execute[i].code);
+          execute[i].code();
           execute.splice(i,1);
       }
     }
