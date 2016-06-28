@@ -87,6 +87,7 @@ function level1() {
   addBox(0,170,30,5);
   addExe(10,155,15,15, function() {
     level2();
+    gravity = 0.3;
   }, "green");
 }
 function level2() {
