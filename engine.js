@@ -186,8 +186,9 @@ function randBot() {
       var dir = colCheck(player,  execute[i]);
       
       if (dir === "r" || dir === "l" || dir === "b" || dir === "t") {
-          execute[i].code();
+          var code = execute[i].code;
           execute.splice(i,1);
+          code();
       }
     }
     
