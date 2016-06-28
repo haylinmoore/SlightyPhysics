@@ -87,6 +87,7 @@ function level1() {
   addBox(0,170,30,5);
   addExe(10,155,15,15, function() {
     level2();
+    gravity = 0.3;
   }, "green");
 }
 function level2() {
@@ -186,8 +187,9 @@ function randBot() {
       var dir = colCheck(player,  execute[i]);
       
       if (dir === "r" || dir === "l" || dir === "b" || dir === "t") {
-          execute[i].code();
+          var code = execute[i].code;
           execute.splice(i,1);
+          code();
       }
     }
     
